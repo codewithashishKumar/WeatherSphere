@@ -5,9 +5,39 @@ const defaultCities = [
   "Kolkata",
   "Hong Kong",
   "New York"
-]
-// const API_KEY = "0e70981083dbc22754fea3bb33e1eb65"
-// 
+];
+
+const iconMap = {
+  "01d": "/icons/sun.png",
+  "01n": "/icons/moon.png",
+
+  "02d": "/icons/partly-sunny.png",
+  "02n": "/icons/cloud.png", // you don't have cloud-moon.png
+
+  "03d": "/icons/cloud.png",
+  "03n": "/icons/cloud.png",
+
+  "04d": "/icons/cloud.png",
+  "04n": "/icons/cloud.png",
+
+  "09d": "/icons/rain.png",
+  "09n": "/icons/rain.png",
+
+  "10d": "/icons/rain.png",  // you don't have rain-sun.png
+  "10n": "/icons/rain.png",
+
+  "11d": "/icons/thunder.png",
+  "11n": "/icons/thunder.png",
+
+  "13d": "/icons/snow.png",
+  "13n": "/icons/snow.png",
+
+  "50d": "/icons/mist.png",
+  "50n": "/icons/mist.png",
+};
+
+
+
 
 function App() {
   const API_KEY = "0e70981083dbc22754fea3bb33e1eb65";
@@ -107,6 +137,10 @@ function App() {
       <header className="header">
         <h1>Weather Sphere</h1>
 
+        <img src="/image.png" alt="Weather App Logo" />
+
+
+
         <div className="search-box">
           <input
             type="text"
@@ -129,7 +163,17 @@ function App() {
                   {weather.name}, {getCountryName(weather.sys?.country)}
                 </h3>
 
-                <p className="temp">{weather.main.temp}°C</p>
+                {/* 🌤 Weather Icon */}
+                <h4 className="iconPlusTem">
+                  <img
+                    className="weather-icon"
+                    src={iconMap[weather.weather[0].icon]}
+                    alt={weather.weather[0].description}
+                  />
+
+                  <p className="temp">{weather.main.temp}°C</p>
+                </h4>
+
                 <p className="description">
                   {weather.weather[0].description}
                 </p>
@@ -152,6 +196,7 @@ function App() {
             ) : null
           )}
         </div>
+
       </section>
 
       {/* SEARCH RESULTS */}
@@ -165,14 +210,26 @@ function App() {
                   className="remove-btn"
                   onClick={() => removeCity(index)}
                 >
-                  ✖
+                  <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.4" y="0.4" width="25.6" height="25.6" rx="12.8" stroke="#000" strokeWidth="0.8" />
+                    <path
+                      d="M16.0006 9.59961L9.60059 15.9996M9.60059 9.59961L16.0006 15.9996" stroke="#000" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </button>
 
                 <h3>
                   {weather.name}, {getCountryName(weather.sys?.country)}
                 </h3>
 
-                <p className="temp">{weather.main.temp}°C</p>
+                <h4 className="iconPlusTem">
+                  <img
+                    className="weather-icon"
+                    src={iconMap[weather.weather[0].icon]}
+                    alt={weather.weather[0].description}
+                  />
+
+                  <p className="temp">{weather.main.temp}°C</p>
+                </h4>
                 <p className="description">
                   {weather.weather[0].description}
                 </p>
