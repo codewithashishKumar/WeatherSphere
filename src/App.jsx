@@ -2,15 +2,15 @@ import { useEffect, useState } from "react"
 import "./App.css"
 
 const defaultCities = [
-  "Mumbai",
   "Kolkata",
   "Hong Kong",
   "New York"
 ]
+// const API_KEY = "0e70981083dbc22754fea3bb33e1eb65"
+// 
 
 function App() {
-  const API_KEY = "0e70981083dbc22754fea3bb33e1eb65"
-
+  const API_KEY = "0e70981083dbc22754fea3bb33e1eb65";
   const [city, setCity] = useState("")
   const [defaultWeather, setDefaultWeather] = useState([])
   const [searchedWeather, setSearchedWeather] = useState([])
