@@ -199,11 +199,14 @@ body {
   border: none;
   color: #ff6b00;
   font-size: 14px;
-  padding: 6px 10px;
-  border-radius: 12px;
+  /* padding: 6px 10px; */
+  border-radius: 50%;
   cursor: pointer;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -227,4 +230,81 @@ body {
   justify-content: space-between;
   border-bottom: 1px solid #000;
   padding: 4px 0;
+}
+
+.theme-toggle-img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.theme-toggle-img:hover {
+  transform: scale(1.1);
+}
+
+/* DARK MODE */
+
+body.dark {
+  background: #000;
+  color: white;
+}
+
+body.dark .header {
+  background: #000;
+  border-bottom: 1px solid #444;
+}
+
+body.dark .search-box input {
+  border: 3px solid white;
+  color: white;
+}
+
+body.dark .search-box input::placeholder {
+  color: #ccc;
+}
+
+body.dark .city-card {
+  border: 3px solid white;
+  box-shadow: 10px 10px 10px white;
+}
+
+body.dark .highlight {
+  border: 3px solid white;
+  box-shadow: 10px 10px 10px white;
+}
+
+body.dark .weather-details p {
+  border-bottom: 1px solid white;
+}
+
+body.dark .theme-toggle {
+  border: 2px solid white;
+  box-shadow: 4px 4px white;
+  background: #1f2937;
+  color: white;
+}
+
+body.dark .city-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.7),
+    inset 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+body.dark .search-box button {
+  border: 2.5px solid white;
+  box-shadow: 6px 6px 10px white;
+}
+
+body.dark .search-box button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 0px 0px white;
+}
+
+body.dark .highlight:hover {
+  transform: translate(-3px, -3px);
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.7),
+    inset 0 0 1px rgba(255, 255, 255, 0.6);
 }

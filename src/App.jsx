@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import "./App.css"
 
 const defaultCities = [
-  "Kolkata",
+  "Delhi",
   "Hong Kong",
   "New York"
 ];
@@ -42,8 +42,28 @@ const iconMap = {
 function App() {
   const API_KEY = "0e70981083dbc22754fea3bb33e1eb65";
   const [city, setCity] = useState("")
-  const [defaultWeather, setDefaultWeather] = useState([])
-  const [searchedWeather, setSearchedWeather] = useState([])
+  const [defaultWeather, setDefaultWeather] = useState([]);
+  const [searchedWeather, setSearchedWeather] = useState([]);
+  // ⭐ DARK MODE STATE
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  )
+
+  // ⭐ APPLY CLASS
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark")
+      localStorage.setItem("theme", "dark")
+    } else {
+      document.body.classList.remove("dark")
+      localStorage.setItem("theme", "light")
+    }
+  }, [darkMode])
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode)
+  }
+
 
 
   const fetchWeatherByCoords = async (lat, lon) => {
@@ -137,9 +157,13 @@ function App() {
       <header className="header">
         <h1>Weather Sphere</h1>
 
-        <img src="/image.png" alt="Weather App Logo" />
-
-
+        <img
+          src="/image.png"
+          alt="Weather App Logo"
+          className="theme-toggle-img"
+          onClick={toggleTheme}
+          title="Toggle Dark / Light Mode"
+        />
 
         <div className="search-box">
           <input
